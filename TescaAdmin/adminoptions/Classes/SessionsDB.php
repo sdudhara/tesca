@@ -107,13 +107,13 @@ class SessionsDB
 			$statement->bindValue(':email', $email);
 			if($statement->execute())
 			{
-                return true;
 			    SessionsDB::sendEmail($email,$randomString);
+				return true;
 			}
             }
             else
             {
-            return false;
+				return false;
             }
 
    }
@@ -122,7 +122,7 @@ class SessionsDB
        date_default_timezone_set('Etc/UTC');
        $mail = new PHPMailer;
        $mail->isSMTP();
-       $mail->SMTPDebug = 2;
+       $mail->SMTPDebug = 0;
        $mail->Host = gethostbyname('smtp.gmail.com');
        $mail->Port = 465;
        $mail->SMTPSecure = 'ssl';

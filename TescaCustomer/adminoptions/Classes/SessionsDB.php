@@ -64,7 +64,7 @@ class SessionsDB
    
    public function redirect()
    {
-		header("Location: http://".$_SERVER['SERVER_NAME']."/tescaphp/");
+		header("Location: http://".$_SERVER['SERVER_NAME']."/tesca/");
    }
    
    public static function logout()

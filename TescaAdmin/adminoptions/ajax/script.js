@@ -68,7 +68,7 @@ $(document).ready(function() {
 				   //alert(data + "here");
 					
 					if(data){
-						window.location.href = "http://"+location.host+"/tesca-master/index.php";
+						window.location.href = "http://"+location.host+"/tesca/";
 					}
 					else{
 						alert("Logout error. Please try again.");

@@ -67,7 +67,7 @@ $(document).ready(function() {
 				   //alert(data + "here");
 					
 					if(data){
-						window.location.href = "http://"+location.host+"/tesca-master/index.php";
+						window.location.href = "http://"+location.host+"/tesca/";
 					}
 					else{
 						alert("Logout error. Please try again.");
@@ -600,7 +600,7 @@ $(document).ready(function() {
                         result+= "<td>"+parseddata[i]['complaints_dept']+"</td>";
                         result+= "<td>"+parseddata[i]['complaint_severity']+"</td>";
                         result+="<td>"+parseddata[i]['complaint_desc']+"</td>";
-                        result+= "<td><a href='http://"+location.host+"/tesca-master/TescaAdmin/adminoptions/uploads/"+parseddata[i]['complaint_img']+"' target='_blank'>View Image</a></td>";
+                        result+= "<td><a href='http://"+location.host+"/tesca/TescaAdmin/adminoptions/uploads/"+parseddata[i]['complaint_img']+"' target='_blank'>View Image</a></td>";
                         result+="<td>"+parseddata[i]['complaint_status']+"</td>";
 						result+="<td><button type='button' onclick='ExistingticketDeleteBtn("+parseddata[i]['complaint_id']+")' class='btn btn-primary'>Delete</button></td>";
 						result+="</tr>";

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2018 at 03:31 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.0.26
+-- Generation Time: Jan 22, 2018 at 06:22 AM
+-- Server version: 10.1.24-MariaDB
+-- PHP Version: 7.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,10 +19,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tesca`
+-- Database: `aptsystem`
 --
-CREATE DATABASE IF NOT EXISTS `tesca` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `tesca`;
+CREATE DATABASE IF NOT EXISTS `aptsystem` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `aptsystem`;
 
 -- --------------------------------------------------------
 
@@ -43,8 +43,9 @@ CREATE TABLE `announcements` (
 --
 
 INSERT INTO `announcements` (`announcement_id`, `announcement_type`, `announcement_desc`, `announcement_date`, `announcement_by_user_id`) VALUES
-(1, 'highimp', 'why terriefied', '2017-12-17 21:35:19', 1),
-(4, 'critical', 'fireeeeeeeeeeeeeee', '2018-01-04 09:56:54', 1);
+(1, 'highimp', 'why terrief', '2017-12-17 21:35:19', 1),
+(4, 'critical', 'fireeeeeeeeeeeeeee', '2018-01-04 09:56:54', 1),
+(5, 'highimp', 'fire in apartment 5400', '2018-01-21 18:16:32', 1);
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,9 @@ CREATE TABLE `apartments` (
 
 INSERT INTO `apartments` (`apt_id`, `apt_number`, `apt_status`) VALUES
 (2, 8600, 'underrenovation'),
-(3, 89000, 'tolet');
+(3, 89000, 'tolet'),
+(4, 8500, 'leased'),
+(5, 8700, 'leased');
 
 -- --------------------------------------------------------
 
@@ -89,7 +92,9 @@ CREATE TABLE `apt_ownership_history` (
 
 INSERT INTO `apt_ownership_history` (`ownership_history_id`, `apt_id`, `user_id`, `date_lease_started`, `date_lease_ended`, `is_current_tenant`, `date_created`, `date_modified`) VALUES
 (1, 2, 11, '2018-01-15 00:00:00', '2018-01-15 00:00:00', 1, '2018-01-14 12:10:37', '2018-01-14 12:10:37'),
-(2, 3, 11, '2018-01-14 00:00:00', '2018-01-15 00:00:00', 0, '2018-01-14 12:10:37', '2018-01-14 12:10:37');
+(2, 3, 11, '2018-01-14 00:00:00', '2018-01-15 00:00:00', 1, '2018-01-14 12:10:37', '2018-01-14 12:10:37'),
+(7, 4, 14, '2018-01-21 00:00:00', '2018-01-25 00:00:00', 1, '2018-01-21 20:59:42', '2018-01-21 20:59:42'),
+(8, 3, 14, '2018-01-21 00:00:00', '2018-01-31 00:00:00', 1, '2018-01-21 21:01:25', '2018-01-21 21:01:25');
 
 -- --------------------------------------------------------
 
@@ -172,9 +177,15 @@ CREATE TABLE `complaints` (
 --
 
 INSERT INTO `complaints` (`complaint_id`, `user_id`, `apt_id`, `complaints_dept`, `complaint_severity`, `complaint_desc`, `complaint_img`, `date_created`, `date_modified`, `complaint_status`) VALUES
-(2, 11, 2, 'Maintenance', 'high', 'asdqaAX', 'noimgavailable.jpg', '2018-01-14 14:09:07', '2018-01-14 14:09:07', 'open'),
-(5, 11, 2, 'Administration', 'low', 'sdfdsf', 'noimgavailable.jpg', '2018-01-14 14:29:31', '2018-01-14 14:29:31', 'open'),
-(6, 11, 2, 'Security', 'low', 'sdfsdf', 'noimgavailable.jpg', '2018-01-14 14:31:03', '2018-01-14 14:31:03', 'open');
+(1, 11, 2, 'Security', 'low', 'sqqdwD', 'uploads/noimgavailable.jpg', '2018-01-14 13:54:05', '2018-01-14 13:54:05', 'open'),
+(2, 11, 2, 'Maintenance', 'high', 'asdqaAX', 'uploads/noimgavailable.jpg', '2018-01-14 14:09:07', '2018-01-14 14:09:07', 'open'),
+(5, 11, 2, 'Administration', 'low', 'sdfdsf', 'uploads/noimgavailable.jpg', '2018-01-14 14:29:31', '2018-01-14 14:29:31', 'open'),
+(6, 11, 2, 'Security', 'low', 'sdfsdf', 'uploads/noimgavailable.jpg', '2018-01-14 14:31:03', '2018-01-14 14:31:03', 'open'),
+(8, 11, 2, 'Security', 'low', 'asdasdasd', 'uploads/noimgavailable.jpg', '2018-01-14 14:34:50', '2018-01-14 14:34:50', 'open'),
+(9, 11, 2, 'Administration', 'high', 'sdfsdfsdfsdfsxvxv sfdsbsdf', 'uploads/11_2_20180114_143527.jpg', '2018-01-14 14:35:27', '2018-01-14 14:35:27', 'open'),
+(10, 11, 2, 'Security', 'low', '', 'noimgavailable.jpg', '2018-01-21 17:01:08', '2018-01-21 17:01:08', 'open'),
+(11, 11, 2, 'Security', 'low', 'spillllllll', '11_2_20180121_172029.jpg', '2018-01-21 17:20:29', '2018-01-21 17:20:29', 'open'),
+(12, 11, 2, 'Security', 'low', 'qeqweqweqwe', 'noimgavailable.jpg', '2018-01-21 17:24:04', '2018-01-21 17:24:04', 'open');
 
 -- --------------------------------------------------------
 
@@ -325,7 +336,9 @@ CREATE TABLE `parking_permits` (
 
 INSERT INTO `parking_permits` (`permit_id`, `permit_type`, `permit_holder_user_id`, `permit_holder_name`, `permit_valid_from_date`, `permit_valid_till_date`, `permit_issue_date`) VALUES
 (1, 'visitor', 1, 'asdasd', '2016-12-02', '2019-02-02', '2018-01-14 11:00:38'),
-(3, 'tenant', 1, 'voui', '2018-01-14', '2018-01-15', '2018-01-14 11:13:19');
+(3, 'tenant', 1, 'voui', '2018-01-14', '2018-01-15', '2018-01-14 11:13:19'),
+(4, 'tenant', 11, 'zxczxc', '2018-01-04', '2018-01-13', '2018-01-21 14:35:38'),
+(9, 'tenant', 11, 'zxczxc', '2018-01-26', '2018-01-27', '2018-01-21 15:36:22');
 
 -- --------------------------------------------------------
 
@@ -348,7 +361,15 @@ CREATE TABLE `rental_payment_details` (
 --
 
 INSERT INTO `rental_payment_details` (`payment_txn_id`, `apt_id`, `user_id`, `payment_date_time`, `payment_month`, `payment_mode`, `payment_amt`) VALUES
-(1, 2, 11, '2018-01-14 17:48:59', 'January', 'Mastercard', 500);
+(1, 2, 11, '2018-01-14 17:48:59', 'January', 'Mastercard', 500),
+(2, 2, 11, '2018-01-21 16:48:27', 'January', 'Visa', 500),
+(3, 2, 11, '2018-01-21 16:48:30', 'January', 'Visa', 500),
+(4, 2, 11, '2018-01-21 16:50:51', 'January', 'Visa', 500),
+(5, 2, 11, '2018-01-21 16:53:55', 'January', 'Visa', 500),
+(6, 2, 11, '2018-01-21 16:56:04', 'January', 'Visa', 500),
+(7, 2, 11, '2018-01-21 17:10:45', 'January', 'Visa', 500),
+(8, 2, 11, '2018-01-21 17:10:57', 'January', 'Visa', 500),
+(9, 2, 11, '2018-01-21 17:25:54', 'January', 'Visa', 600);
 
 -- --------------------------------------------------------
 
@@ -397,15 +418,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `middle_name`, `last_name`, `home_phone`, `alternate_phone`, `cell_phone`, `email`, `address_line1`, `address_line2`, `city`, `province`, `zipcode`, `country`, `user_name`, `password`, `date_created`, `date_modified`, `is_active`, `user_category`) VALUES
-(1, 'sachin', NULL, 'dudhara', '-', '-', '6477138690', 'sachin@fas.com', '2hskjdfk', 'sfhksjfh', 'sdfhnskjf', 'sfdkjsdkjf', '325878', 'sdhfkjsdf', 'sachin', '827ccb0eea8a706c4c34a16891f84e7b', '2017-12-12 20:19:48', '2017-12-12 20:19:48', 1, 'staff'),
-(3, 'Amos', 'Yoshi ', 'Roth', '97', '50', '467856745645', 'noviha@yahoo.com', 'Architecto sit amet ducimus ', 'Molestias mollit dolor dolor ', 'OTTAWA', 'BC', 'M9L2C3', 'canada', 'Bertha', '12345', '2017-12-15 11:14:18', '2017-12-15 11:14:18', 1, 'user'),
-(4, 'Alfonso Collier', 'Whoopi Navarro', 'Kelsey Berg', '81', '72', '73', 'gahu@hotmail.com', 'Quisquam maiores odit deserunt commodo proident velit magni qui', 'Aut quae a et lorem amet qui dolore recusandae Accusamus molestiae laudantium iusto beatae do non in', 'OTTAWA', 'Odit explicabo Nam accusantium numquam reprehenderit culpa non nihil quod rerum maiores lorem exerci', '72550', 'canada', 'Claire White', 'Pa$$w0rd!', '2017-12-15 12:29:40', '2017-12-15 12:29:40', 0, 'staff'),
-(5, 'nitish', 'singh', 'luna', '4379966414', '4379966414', '4379966414', 'nitishluna@ymail.com', '43 Sultan Pool drive, main floor', 'dASsSsASsAS', 'TORONTO', 'ON', 'M9V4H3', 'canada', 'Tejinder', '0260202860349098b8636d022014e4ba', '2017-12-17 21:05:50', '2017-12-17 21:05:50', 1, 'staff'),
-(6, 'jenelia', 'hunro', 'susan', '1234552890', '1234567873', '1234567883', 'tajinderluna@gmail.com', '43 Sultan Pool drive, main floor', 'aasasasas', 'TORONTO', 'ON', 'M9V4H3', 'canada', 'Tejinder', '123456', '2018-01-01 15:54:40', '2018-01-01 15:54:40', 1, 'user'),
-(8, 'samsung', '', 'luna', '4379966414', '4379966414', '4379966414', 'tajinderluna@gmail.com', '43 Sultan Pool drive, main floor', '', 'TORONTO', 'ON', 'M9V4H3', 'canada', 'Tejinder', '46378', '2018-01-01 18:16:24', '2018-01-01 18:16:24', 1, 'user'),
-(9, 'sachin', 'asas', 'dudhara', '123456789', '123456789', '4168871454', 'sachin.dudhara@gmail.com', '145 Richwood cres', '', 'TORONTO', 'Ontario', 'L6X4N3', 'canada', 'sachin123', '123456', '2018-01-02 11:26:50', '2018-01-02 11:26:50', 1, 'user'),
-(10, 'sdfsdfsfd', 'sdfsdfsdfssdfsd', 'sdfsdfs3232', '31212', '23232323', '32342325', 'tajinderluna@gmail.com', '43 Sultan Pool drive, main floor', 'dasdasd', 'TORONTO', 'ON', 'M9V4H3', 'canada', 'Tejinder', '1234', '2018-01-02 22:05:48', '2018-01-02 22:05:48', 1, 'user'),
-(11, 'tejinder', 'ZXZX', 'ZXZxZX', '192837465', '123123', '123095', 'tejinderluna@outlook.com', 'adasdasdadas', 'zdzcxdasdasd', 'MONTREAL', 'ON', 'asASas', 'canada', 'teji', '827ccb0eea8a706c4c34a16891f84e7b', '2018-01-04 03:52:12', '2018-01-04 03:52:12', 1, 'user');
+(1, 'sachin', '', 'dudhara', '', '', '6477138690', 'sachin@fas.com', '2hskjdfk', 'sfhksjfh', '', 'sfdkjsdkjf', '325878', 'sdhfkjsdf', 'sachin', '1f32aa4c9a1d2ea010adcf2348166a04', '2017-12-12 20:19:48', '2017-12-12 20:19:48', 1, 'user'),
+(11, 'tejinder', 'ZXZX', 'ZXZxZX', '192837465', '123123', '123095', 'tejinderluna@outlook.com', 'adasdasdadas', 'zdzcxdasdasd', 'MONTREAL', 'ON', 'asASas', 'canada', 'teji', '827ccb0eea8a706c4c34a16891f84e7b', '2018-01-04 03:52:12', '2018-01-04 03:52:12', 1, 'staff'),
+(14, 'vikram', 'singh', 'singh', '12345678', '12345678', '12345678', 'tajinderluna@gmail.com', '43 Sultan Pool drive, main floor', 'northyotk', 'TORONTO', 'ON', 'M9V4H3', 'Canada', 'vikram', '827ccb0eea8a706c4c34a16891f84e7b', '2018-01-21 18:58:54', '2018-01-21 18:58:54', 1, 'user'),
+(19, 'Parvesh', 'Kumar', 'Kashyap', '4168871454', '4168871454', '4168871454', 'tajinderluna@gmail.com', '145 Richwood cres', 'nnamsd,mans', 'TORONTO', 'Ontario', 'L6X4N3', 'Canada', 'Parvesh', '04c399cc21498304db805ee9185fbd6c', '2018-01-21 21:49:58', '2018-01-21 21:49:58', 1, 'user'),
+(20, 'sachin', '', 'dudhara', '1234567890', '1234567890', '1234567890', 'sachin.dudhara@gmail.com', 'finch avenue west', 'finch avenue west', 'TORONTO', 'ON', 'M9L2C3', 'Canada', 'sachin', '827ccb0eea8a706c4c34a16891f84e7b', '2018-01-21 22:34:02', '2018-01-21 22:34:02', 1, 'staff'),
+(21, 'nitish', 'singh', 'luna', '1234567890', '1234567890', '1234567890', 'nitishluna7@icloud.com', '217', 'gracedale blvd', 'TORONTO', 'ON', 'M9L2C3', 'Canada', 'nitish', '2419826280fd411f4689e543c5c7f53b', '2018-01-21 22:37:24', '2018-01-21 22:37:24', 1, 'user');
 
 -- --------------------------------------------------------
 
@@ -577,110 +595,92 @@ ALTER TABLE `visitors`
 -- AUTO_INCREMENT for table `announcements`
 --
 ALTER TABLE `announcements`
-  MODIFY `announcement_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `announcement_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `apartments`
 --
 ALTER TABLE `apartments`
-  MODIFY `apt_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `apt_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `apt_ownership_history`
 --
 ALTER TABLE `apt_ownership_history`
-  MODIFY `ownership_history_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `ownership_history_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `assets`
 --
 ALTER TABLE `assets`
   MODIFY `asset_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `cat_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+  MODIFY `complaint_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `complaint_escalations`
 --
 ALTER TABLE `complaint_escalations`
   MODIFY `complaint_esc_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
   MODIFY `dept_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `discussions`
 --
 ALTER TABLE `discussions`
   MODIFY `thread_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
   MODIFY `doc_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
   MODIFY `feedback_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `inventories`
 --
 ALTER TABLE `inventories`
   MODIFY `inv_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `notices`
 --
 ALTER TABLE `notices`
   MODIFY `notice_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `parking_permits`
 --
 ALTER TABLE `parking_permits`
-  MODIFY `permit_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `permit_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `rental_payment_details`
 --
 ALTER TABLE `rental_payment_details`
-  MODIFY `payment_txn_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `payment_txn_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `sub_categories`
 --
 ALTER TABLE `sub_categories`
   MODIFY `sub_cat_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `visitors`
 --
 ALTER TABLE `visitors`
   MODIFY `visitor_id` int(100) NOT NULL AUTO_INCREMENT;
-
 --
 -- Constraints for dumped tables
 --

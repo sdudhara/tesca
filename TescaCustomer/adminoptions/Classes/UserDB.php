@@ -46,7 +46,7 @@ class UserDB
         date_default_timezone_set('Etc/UTC');
         $mail = new PHPMailer;
         $mail->isSMTP();
-        $mail->SMTPDebug = 2;
+        $mail->SMTPDebug = 0;
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = 465;
         $mail->SMTPSecure = 'ssl';
